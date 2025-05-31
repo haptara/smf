@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "sans-serif";
+  --font-logofl: "Nunito", sans-serif;
+  --red-logo: #e3280e;
+  --primary: #eb7036;
+  --secondary: #f7a156;
+  --accent: #5e5e5e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-scroll-down {
+  animation: scrollDown 1.5s infinite;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  h1 {
+    line-height: 1.3;
+  }
+}
+
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.aspect-w-3 {
+  position: relative;
+  padding-bottom: 133.33%;
+}
+
+.aspect-w-16 > img,
+.aspect-w-3 > img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+}

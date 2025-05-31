@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en" x-data="smfTheme()" x-init="init()" :class="{ 'dark': isDark }">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sarana Mega Fortuna | Perusahaan Garment & Tekstil Bandung</title>
+    <meta
+      name="description"
+      content="SMF (Sarana Mega Fortuna) adalah perusahaan manufaktur garment & tekstil terpercaya di Bandung, Indonesia. Spesialis dalam pakaian bayi, pakaian rajut, dan produk berkualitas ekspor."
+    />
+    <meta
+      name="keywords"
+      content="SMF, sarana mega fortuna, garment, garmen, bandung, manufacturing company, garment industry, textile, manufactur, manufacturing, tekstil, pakaian bayi, fluffy, industri, garmen industri, Indonesia, perusahaan garmen bandung, baju bayi bandung, perusahaan baju bayi bandung, perlekangkapan bayi bandung"
+    />
+    <meta name="author" content="Sarana Mega Fortuna" />
+    <link rel="canonical" href="https://www.smfgarment.co.id/" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo-smf.png" />
+    <link rel="apple-touch-icon" href="images/logo-smf.png" />
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta
+      property="og:title"
+      content="Sarana Mega Fortuna | Perusahaan Garment & Tekstil Bandung"
+    />
+    <meta
+      property="og:description"
+      content="Produsen garmen berkualitas di Bandung, spesialisasi pakaian bayi dan tekstil ekspor."
+    />
+    <meta
+      property="og:image"
+      content="https://www.smfgarment.co.id/images/og-image.jpg"
+    />
+    <meta property="og:url" content="https://www.smfgarment.co.id/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Sarana Mega Fortuna - Garment Manufacturer Bandung"
+    />
+    <meta
+      name="twitter:description"
+      content="SMF adalah pabrik garment dan tekstil berkualitas di Bandung, Indonesia."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.smfgarment.co.id/images/og-image.jpg"
+    />
+
+    <!-- Schema.org JSON-LD for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Sarana Mega Fortuna",
+        "url": "https://www.smfgarment.co.id",
+        "logo": "https://www.smfgarment.co.id/images/logo.png",
+        "sameAs": [
+          "https://facebook.com/smfgarment",
+          "https://instagram.com/smfgarment"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Contoh No.123",
+          "addressLocality": "Bandung",
+          "postalCode": "40123",
+          "addressCountry": "ID"
+        },
+        "description": "Sarana Mega Fortuna (SMF) adalah perusahaan manufaktur garment dan tekstil di Bandung yang menyediakan produk berkualitas tinggi untuk kebutuhan lokal dan ekspor."
+      }
+    </script>
+
+    <!-- Performance & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Boxicons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <!-- Tailwind CSS -->
+    <link href="src/output.css" rel="stylesheet" />
+
+    <!-- Alpine Js -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body
+    class="font-sans antialiased bg-gray-50 dark:bg-slate-900 transition-colors duration-300"
+  >
+    <div class="flex flex-col min-h-screen">
+      <header
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5"
+        :class="isScrolled ? 'bg-white md:bg-white/80 dark:bg-gray-800 md:dark:bg-gray-800/80 md:backdrop-blur-sm shadow-md':'bg-transparent'"
+      >
+        <div class="container mx-auto px-4 md:px-6">
+          <div class="flex items-center justify-between">
+            <a
+              href="#home"
+              class="flex items-center space-x-2 text-gray-900 no-underline"
+              @click="closeMenu"
+            >
+              <img
+                src="images/logo-smf.png"
+                alt="Sarana Mega Fortuna"
+                class="w-8 md:w-10"
+              />
+              <span
+                class="hidden md:inline-block text-xl md:text-2xl font-bold transition-colors duration-300"
+                :class="isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white'"
+              >
+                SARANA MEGA FORTUNA
+              </span>
+              <span
+                class="inline-block md:hidden text-xl md:text-2xl font-bold transition-colors duration-300"
+                :class="isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white'"
+              >
+                SMF
+              </span>
+              <!-- <span
+                class="hidden sm:inline-block text-sm transition-colors duration-300"
+                :class="isScrolled ? 'text-gray-900' : 'text-white'"
+              >
+                Premium Garment Manufacturing
+              </span> -->
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8">
+              <!-- <a
+                href=""
+                class="text-sm font-medium transition-colors duration-300 text-teal-600 hover:text-teal-600" 
+                :class="isScrolled ? 'text-gray-700' : 'text-white'" ${
+                  activeSection === item.href.replace('#', '') 
+                    ? 'text-teal-600' 
+                    : scrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              >
+                {item.label}
+              </a> -->
+              <a
+                href="#home"
+                class="font-medium transition-colors duration-300"
+                :class="activeSection === 'home' ? 'text-[#eb7036]' : (isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white')"
+                @click="setActiveSection('home')"
+                >Home</a
+              >
+
+              <a
+                href="#about"
+                class="font-medium transition-colors duration-300"
+                :class="activeSection === 'about' ? 'text-[#eb7036]' : (isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white')"
+                @click="setActiveSection('about')"
+                >About</a
+              >
+              <a
+                href="#contact"
+                class="font-medium transition-colors duration-300"
+                :class="activeSection === 'contact' ? 'text-[#eb7036]' : (isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white')"
+                @click="setActiveSection('contact')"
+                >Contact</a
+              >
+              <a
+                href="#"
+                @click.prevent="toggleTheme()"
+                class="font-medium transition-colors duration-300"
+                :class="activeSection === 'contact' ? 'text-[#eb7036]' : (isScrolled ? 'text-gray-900 dark:text-gray-50' : 'text-white')"
+              >
+                <i
+                  class="bx text-2xl"
+                  :class="isDark ? 'bx bx-sun':'bx bx-moon'"
+                ></i>
+              </a>
+              <a
+                href="#contact"
+                class="px-4 py-2 rounded-md text-sm font-medium transition-all duration-300"
+                :class="isScrolled ? 'bg-[#eb7036] text-white hover:bg-[#eb7036]/80' : 'bg-white text-gray-900 hover:bg-gray-100'"
+              >
+                Get in Touch
+              </a>
+            </nav>
+
+            <button
+              @click="toggleMenu"
+              class="md:hidden transition-colors duration-300"
+              :class="isScrolled ? 'text-gray-900 dark:text-gray-50':'text-white'"
+              aria-label="Toggle menu"
+            >
+              <i
+                class="text-3xl"
+                :class="isMenuOpen ? 'bx bx-x' : 'bx bx-menu-alt-right'"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div
+          class="md:hidden fixed inset-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm transition-transform duration-300 transform"
+          :class="isMenuOpen ? 'translate-x-0':'translate-x-full'"
+        >
+          <div class="flex flex-col h-full p-6">
+            <div class="flex justify-between items-center mb-8">
+              <a
+                href="#home"
+                class="text-md font-bold text-gray-900 dark:text-gray-50 flex items-center gap-2"
+                @click="closeMenu"
+              >
+                <img src="images/logo-smf.png" alt="Logo" class="w-8 md:w-10" />
+                SMF
+              </a>
+              <button
+                @click="closeMenu"
+                class="text-gray-900 dark:text-gray-50"
+              >
+                <i class="bx bx-x text-2xl"></i>
+              </button>
+            </div>
+
+            <nav class="flex flex-col space-y-6">
+              <a
+                href="#home"
+                class="text-lg dark:text-gray-50 font-medium"
+                @click="setActiveSection('home')"
+                >Home</a
+              >
+              <a
+                href="#home"
+                class="text-lg dark:text-gray-50 font-medium"
+                @click="setActiveSection('home')"
+                >About</a
+              >
+              <a
+                href="#home"
+                class="text-lg dark:text-gray-50 font-medium"
+                @click="setActiveSection('home')"
+                >Contact</a
+              >
+
+              <a
+                href="#"
+                @click.prevent="toggleTheme()"
+                class="text-lg dark:text-gray-50 font-medium"
+                ><i
+                  class="text-2xl"
+                  :class="isDark ? 'bx bx-sun':'bx bx-moon'"
+                ></i
+              ></a>
+              <a
+                href="#contact"
+                class="px-6 py-3 bg-[#eb7036] text-white text-center rounded-md text-lg font-medium hover:bg-[#eb7036]/90 transition-colors duration-300"
+                @click="closeMenu"
+              >
+                Get in Touch
+              </a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-grow">
+        <section id="home">
+          <div class="relative h-screen">
+            <!-- Background image with overlay -->
+            <div
+              class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style="
+                background-image: url('https://images.pexels.com/photos/4620621/pexels-photo-4620621.jpeg');
+              "
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#5e5e5e] dark:from-black/80 to-[#5e5e5e]/50 dark:to-black/50"
+              ></div>
+            </div>
+
+            <!-- Content -->
+            <div
+              class="relative h-full container mx-auto px-4 md:px-6 flex flex-col justify-center"
+            >
+              <div class="max-w-3xl animate-fade-in-up">
+                <h1
+                  class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                >
+                  Crafting Premium Garments with
+                  <span
+                    class="bg-gradient-to-r from-[#e3280e] to-[#eb7036] bg-clip-text text-5xl font-extrabold text-transparent"
+                  >
+                    Precision
+                  </span>
+                </h1>
+                <p
+                  class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed"
+                >
+                  From concept to creation, we deliver exceptional quality
+                  garments that combine innovative design with impeccable
+                  craftsmanship
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-6 py-3 bg-[#eb7036] text-white rounded-md text-lg font-medium hover:bg-[#eb7036]/80 transition-colors duration-300"
+                  >
+                    Discover Our Process
+                    <i class="bx bx-chevron-right text-2xl ml-2"></i>
+                  </a>
+                  <a
+                    href="#products"
+                    class="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-md text-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300"
+                  >
+                    View Collection
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div
+              class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-10"
+            >
+              <span class="text-white text-sm mb-2">Scroll Down</span>
+              <div
+                class="w-6 h-10 border-2 border-white rounded-full flex justify-center"
+              >
+                <div
+                  class="w-1 h-3 bg-white rounded-full mt-2 animate-scroll-down"
+                ></div>
+              </div>
+            </div>
+
+            <div
+              class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#5e5e5e] dark:from-gray-900 to-transparent pointer-events-none"
+            ></div>
+          </div>
+        </section>
+
+        <section id="products" class="py-6">
+          <div class="container mx-auto px-4 md:px-6">
+            <!-- <div class="text-center mb-16">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our Products
+              </h2>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Discover our range of premium garment collections, crafted with
+                exceptional attention to detail.
+              </p>
+            </div> -->
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-10">
+              <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://img.freepik.com/free-photo/baby-elementson-pink_1220-4298.jpg?ga=GA1.1.1962201607.1729735529&semt=ais_hybrid&w=740"
+                    alt="Produk 1"
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#eb7036]/70 dark:from-gray-800/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 opacity-100"
+                >
+                  <h3 class="text-xl md:text-2xl font-bold text-white mb-2">
+                    Pakaian
+                  </h3>
+                  <!-- <p
+                    class="text-gray-200 transition-all duration-500 max-h-20 opacity-100"
+                  >
+                    {product.description}
+                  </p> -->
+                </div>
+              </div>
+              <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://img.freepik.com/free-photo/baby-s-pant-socks-headwear-pacifier-hanging-clothesline-with-clothespins-against-wooden-wall_23-2147900742.jpg?ga=GA1.1.1962201607.1729735529&semt=ais_hybrid&w=740"
+                    alt="Produk 1"
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#eb7036]/70 dark:from-gray-800/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 opacity-100"
+                >
+                  <h3 class="text-xl md:text-2xl font-bold text-white mb-2">
+                    Celana
+                  </h3>
+                  <!-- <p
+                    class="text-gray-200 transition-all duration-500 max-h-20 opacity-100"
+                  >
+                    {product.description}
+                  </p> -->
+                </div>
+              </div>
+              <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://img.freepik.com/free-photo/baby-s-sock-pair-woolen-shoes-pacifier-cap-milk-bottle-toy-orange-background_23-2147900713.jpg?ga=GA1.1.1962201607.1729735529&semt=ais_hybrid&w=740"
+                    alt="Produk 1"
+                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#eb7036]/70 dark:from-gray-800/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 opacity-100"
+                >
+                  <h3 class="text-xl md:text-2xl font-bold text-white mb-2">
+                    Aksesoris
+                  </h3>
+                  <!-- <p
+                    class="text-gray-200 transition-all duration-500 max-h-20 opacity-100"
+                  >
+                    {product.description}
+                  </p> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a
+                href="#contact"
+                class="inline-flex items-center px-6 py-3 bg-[#eb7036] text-white rounded-md text-lg font-medium hover:bg-[#eb7036]/90 transition-colors duration-300"
+              >
+                Request Custom Products
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="py-20">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4"
+              >
+                Tentang Kami
+              </h2>
+              <p
+                class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              >
+                Kami berkomitmen untuk memberikan produk terbaik untuk Anda.
+              </p>
+            </div>
+            <div
+              class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20"
+            >
+              <div class="lg:w-1/2 relative">
+                <div
+                  class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#eb7036]"
+                ></div>
+                <div class="relative overflow-hidden rounded-lg shadow-xl">
+                  <img
+                    src="https://images.pexels.com/photos/4614227/pexels-photo-4614227.jpeg"
+                    alt="About FabricElite"
+                    class="aspect-square object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div
+                  class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-[#eb7036]"
+                ></div>
+              </div>
+
+              <div class="lg:w-1/2">
+                <div class="mb-10">
+                  <h2
+                    class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-3"
+                  >
+                    Our Story
+                  </h2>
+                  <p class="text-xl text-[#eb7036] mb-6">
+                    Crafting Excellence Since 2001
+                  </p>
+                  <!-- <div
+                    x-data="{ expanded: false }"
+                    class="relative max-w-2xl mb-8"
+                  >
+                    <div
+                      :class="expanded ? 'max-h-full' : 'max-h-70 overflow-hidden'"
+                      class="relative transition-all duration-300"
+                    >
+                      <div class="text-gray-700 leading-relaxed mb-8">
+                        PT. Sarana Mega Fortuna adalah perusahaan manufaktur
+                        yang bergerak di bidang garment yang berlokasi di
+                        Bandung, Jawa Barat, Indonesia. <br /><br />
+                        Perusahaan kami berdiri sejak tahun 2001 dalam bentuk
+                        perusahaan perorangan. Dari tahun 2001 hingga saat ini,
+                        kami memproduksi pakaian bayi dengan merk sendiri yaitu
+                        FLUFFY.
+                        <br />
+                        Pada tahun 2008 direksi memutuskan untuk peningkatan
+                        status badan usaha menjadi perseroan terbatas. dengan
+                        bentuk badan usaha yang baru perusahaan dapat
+                        mengembangkan usahanya secara lebih profesional. <br />
+                        PT. Sarana Mega Fortuna selalu berupaya melakukan
+                        peningkatan baik dari inovasi produk maupun layanan,
+                        sehingga menjadi perusahaan yang selalu terdepan di
+                        setiap era.
+                      </div>
+                      <div
+                        x-show="!expanded"
+                        class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"
+                      ></div>
+                    </div>
+                    <button
+                      x-text="expanded ? 'Read Less' : 'Read More'"
+                      @click="expanded = !expanded"
+                      class="text-blue-600 font-semibold hover:underline mt-2"
+                    ></button>
+                  </div> -->
+
+                  <div class="relative max-w-2xl mb-8">
+                    <div class="max-h-70 overflow-hidden relative">
+                      <p
+                        class="text-gray-700 dark:text-gray-200 leading-relaxed mb-8"
+                      >
+                        PT. Sarana Mega Fortuna adalah perusahaan manufaktur
+                        yang bergerak di bidang garment yang berlokasi di
+                        Bandung, Jawa Barat, Indonesia. <br /><br />
+                        Perusahaan kami berdiri sejak tahun 2001 dalam bentuk
+                        perusahaan perorangan. Dari tahun 2001 hingga saat ini,
+                        kami memproduksi pakaian bayi dengan merk sendiri yaitu
+                        FLUFFY.
+                        <br />
+                        Pada tahun 2008 direksi memutuskan untuk peningkatan
+                        status badan usaha menjadi perseroan terbatas. dengan
+                        bentuk badan usaha yang baru perusahaan dapat
+                        mengembangkan usahanya secara lebih profesional. <br />
+                        PT. Sarana Mega Fortuna selalu berupaya melakukan
+                        peningkatan baik dari inovasi produk maupun layanan,
+                        sehingga menjadi perusahaan yang selalu terdepan di
+                        setiap era.
+                      </p>
+
+                      <!-- Gradient fade -->
+                      <div
+                        class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent pointer-events-none"
+                      ></div>
+                    </div>
+
+                    <!-- Read More Button -->
+                    <a
+                      href="/about"
+                      class="inline-block text-sm mt-2 text-blue-600 font-medium hover:underline"
+                    >
+                      Read More →
+                    </a>
+                  </div>
+
+                  <!-- Stats grid -->
+                  <div class="grid grid-cols-2 gap-6">
+                    <div
+                      class="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-[#eb7036] shadow-sm transform hover:-translate-y-1 transition-transform duration-300"
+                    >
+                      <p
+                        class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1"
+                      >
+                        24
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-300">
+                        Years Experience
+                      </p>
+                    </div>
+                    <div
+                      class="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-[#eb7036] shadow-sm transform hover:-translate-y-1 transition-transform duration-300"
+                    >
+                      <p
+                        class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1"
+                      >
+                        500+
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-300">
+                        Global Clients
+                      </p>
+                    </div>
+                    <div
+                      class="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-[#eb7036] shadow-sm transform hover:-translate-y-1 transition-transform duration-300"
+                    >
+                      <p
+                        class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1"
+                      >
+                        10M+
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-300">
+                        Garments Produced
+                      </p>
+                    </div>
+                    <div
+                      class="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-[#eb7036] shadow-sm transform hover:-translate-y-1 transition-transform duration-300"
+                    >
+                      <p
+                        class="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-1"
+                      >
+                        25
+                      </p>
+                      <p class="text-gray-600 dark:text-gray-300">
+                        Countries Served
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="py-20 bg-gray-50 dark:bg-gray-800">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4"
+              >
+                Brand Positioning
+              </h2>
+              <p
+                class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              >
+                We offer comprehensive end-to-end garment manufacturing
+                services, from initial design to global distribution.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transform hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div
+                  class="p-2 inline-flex items-center bg-[#eb7036]/10 rounded-xl mb-6"
+                >
+                  <i class="bx bx-target-lock text-2xl text-[#eb7036]"></i>
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 dark:text-gray-50"
+                >
+                  Target Audiens
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Target audiens SMF yaitu ibu muda berkisar usia 23-45 tahun
+                  yang sedang mengandung atau sudah memiliki anak berusia 0-3
+                  tahun
+                </p>
+              </div>
+
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transform hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div
+                  class="p-2 inline-flex items-center bg-[#eb7036]/10 rounded-xl mb-6"
+                >
+                  <i class="bx bx-palette text-2xl text-[#eb7036]"></i>
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 dark:text-gray-50"
+                >
+                  Keunikan Merek
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Keunikan dari produk SMF yaitu bahan yang super lembut, aman
+                  untuk setiap karakter bayi dan memiliki ciri khas warna pastel
+                  dan pattern yang selalu baru secara berkala
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transform hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div
+                  class="p-2 inline-flex items-center bg-[#eb7036]/10 rounded-xl mb-6"
+                >
+                  <i class="bx bx-repost text-2xl text-[#eb7036]"></i>
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 dark:text-gray-50"
+                >
+                  Posisi Merek
+                </h3>
+                <ul class="list-disc text-gray-600 dark:text-gray-300">
+                  <li>Memberikan pelayanan terbaik untuk pelanggan</li>
+                  <li>Menghasilkan produk kualitas terbaik</li>
+                  <li>Menjadi produk lokal yang mendunia</li>
+                  <li>Produk lokal paling disukai.</li>
+                </ul>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transform hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div
+                  class="p-2 inline-flex items-center bg-[#eb7036]/10 rounded-xl mb-6"
+                >
+                  <i class="bx bx-repost text-2xl text-[#eb7036]"></i>
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 dark:text-gray-50"
+                >
+                  Uji Pernyataan Produk
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">Penelitian</p>
+                <ul class="list-disc text-gray-600 dark:text-gray-300">
+                  <li>Segmen Pasar</li>
+                  <li>Konsumen</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="process" class="py-20 bg-gray-50 dark:bg-gray-800">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4"
+              >
+                Our Process
+              </h2>
+              <p
+                class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              >
+                We follow a systematic approach to ensure quality and
+                satisfaction at every step of garment production.
+              </p>
+            </div>
+
+            <div class="relative">
+              <div
+                class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#eb7036] transform -translate-x-1/2 hidden md:block"
+              ></div>
+
+              <div class="space-y-12 md:space-y-0">
+                <div class="flex flex-col md:flex-row items-center md:flex-row">
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        1
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-left ml-0 md:ml-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Consultation & Design
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      We begin with a thorough consultation to understand your
+                      vision, target market, and specific requirements.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col md:flex-row items-center md:flex-row-reverse"
+                >
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        2
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-right mr-0 md:mr-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Material Selection
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      Our experts help you select the ideal fabrics and
+                      materials to achieve your desired look, feel, and
+                      functionality.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center md:flex-row">
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        3
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-left ml-0 md:ml-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Prototyping
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      We create detailed prototypes for your approval, allowing
+                      for adjustments before moving to production.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col md:flex-row items-center md:flex-row-reverse"
+                >
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        4
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-right mr-0 md:mr-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Production
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      Using advanced technology and skilled craftsmanship, we
+                      bring your designs to life with precision and care.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center md:flex-row">
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        5
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-left ml-0 md:ml-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Quality Control
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      Every garment undergoes rigorous inspection to ensure it
+                      meets our exacting standards of quality.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col md:flex-row items-center md:flex-row-reverse"
+                >
+                  <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                      <div
+                        class="w-20 h-20 rounded-full bg-[#eb7036] flex items-center justify-center text-white text-2xl font-bold mb-4 md:mb-0 z-10 relative"
+                      >
+                        6
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="md:w-1/2 p-6 bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow-md border border-gray-100 md:text-right mr-0 md:mr-6"
+                  >
+                    <h3
+                      class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3"
+                    >
+                      Delivery
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                      We carefully package and ship your order to your specified
+                      destination, on time and in perfect condition.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="news" class="py-20">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4"
+              >
+                Latest News
+              </h2>
+              <p
+                class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              >
+                Stay updated with the latest developments and innovations at
+                FabricElite.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md group"
+              >
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg"
+                    alt="Blog 1"
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    June 15, 2025
+                  </p>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3 group-hover:text-[#eb7036] transition-colors duration-300"
+                  >
+                    Fluffy Baby Launches Sustainable Denim Line
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Our new collection features organic cotton and innovative
+                    water-saving production techniques.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-[#eb7036] font-medium group-hover:text-[#e3280e] transition-colors duration-300"
+                  >
+                    Read More
+                    <i
+                      class="bx bx-arrow-right-alt ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md group"
+              >
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://images.pexels.com/photos/3776748/pexels-photo-3776748.jpeg"
+                    alt="Blog 1"
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    April 10, 2025
+                  </p>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3 group-hover:text-[#eb7036] transition-colors duration-300"
+                  >
+                    Partnership with Leading Fashion Brands
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Our new collection features organic cotton and innovative
+                    water-saving production techniques.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-[#eb7036] font-medium group-hover:text-[#e3280e] transition-colors duration-300"
+                  >
+                    Read More
+                    <i
+                      class="bx bx-arrow-right-alt ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md group"
+              >
+                <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src="https://images.pexels.com/photos/3769118/pexels-photo-3769118.jpeg"
+                    alt="Blog 1"
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div class="p-6">
+                  <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    May 22, 2025
+                  </p>
+                  <h3
+                    class="text-xl font-semibold text-gray-900 dark:text-gray-50 mb-3 group-hover:text-[#eb7036] transition-colors duration-300"
+                  >
+                    Expanding Our Manufacturing Capabilities
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    New state-of-the-art facility increases production capacity
+                    while maintaining our commitment to quality.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center text-[#eb7036] font-medium group-hover:text-[#e3280e] transition-colors duration-300"
+                  >
+                    Read More
+                    <i
+                      class="bx bx-arrow-right-alt ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a
+                href="#"
+                class="inline-flex items-center px-6 py-3 border-2 border-[#eb7036] text-[#eb7036] rounded-md text-lg font-medium hover:bg-[#eb7036] hover:text-white transition-colors duration-300"
+              >
+                View All News
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+              <h2
+                class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-50 mb-4"
+              >
+                Get in Touch
+              </h2>
+              <p
+                class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+              >
+                Ready to start your project? Contact us today to discuss your
+                garment manufacturing needs.
+              </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+              <div class="lg:w-1/3">
+                <div class="bg-white dark:bg-gray-700 rounded-lg p-8 h-full">
+                  <h3 class="text-2xl dark:text-gray-50 font-semibold mb-6">
+                    Contact Information
+                  </h3>
+                  <div class="space-y-6">
+                    <div class="flex items-start">
+                      <i
+                        class="bx bx-map text-2xl text-[#eb7036] mr-4 mt-1"
+                      ></i>
+                      <p class="dark:text-gray-300">
+                        Jl. Haji Kurdi Timur I No. 28 Bandung, Jawa Barat
+                        Indonesia
+                      </p>
+                    </div>
+                    <div class="flex items-center">
+                      <i
+                        class="bx bx-phone text-2xl text-[#eb7036] mr-4 mt-1"
+                      ></i>
+                      <p class="dark:text-gray-300">(022) 5204788</p>
+                    </div>
+                    <div class="flex items-center">
+                      <i
+                        class="bx bx-envelope text-2xl text-[#eb7036] mr-4 mt-1"
+                      ></i>
+                      <p class="dark:text-gray-300">fluffycar@gmail.com</p>
+                    </div>
+                    <div class="flex items-center">
+                      <i
+                        class="bx bx-globe text-2xl text-[#eb7036] mr-4 mt-1"
+                      ></i>
+                      <p class="dark:text-gray-300">www.sarana.id</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mt-8 h-48 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center"
+                  >
+                    <p class="text-gray-900 dark:text-gray-300">
+                      Interactive Map Coming Soon
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:w-2/3">
+                <form
+                  class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8"
+                >
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <label
+                        for="name"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        class="w-full px-4 py-3 border text-gray-800 dark:text-gray-50 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036] focus:border-transparent transition-colors duration-300"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="email"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="w-full px-4 py-3 border text-gray-800 dark:text-gray-50 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036] focus:border-transparent transition-colors duration-300"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="phone"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        class="w-full px-4 py-3 border text-gray-800 dark:text-gray-50 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036] focus:border-transparent transition-colors duration-300"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="company"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        class="w-full px-4 py-3 border text-gray-800 dark:text-gray-50 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036] focus:border-transparent transition-colors duration-300"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-6">
+                    <label
+                      for="message"
+                      class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
+                      Your Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows="5"
+                      class="w-full px-4 py-3 border text-gray-800 dark:text-gray-50 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036] focus:border-transparent transition-colors duration-300"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="w-full px-6 py-3 bg-[#eb7036] text-white rounded-md text-lg font-medium hover:bg-[#eb7036]/70 transition-colors duration-300"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-[#5e5e5e]/90 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12"
+          >
+            <div class="lg:col-span-2">
+              <div class="flex flex-col items-start space-x-2 mb-4">
+                <span class="text-2xl font-bold">PT. Sarana Mega Fortuna</span>
+                <span class="text-sm text-gray-300">
+                  Memimpin dengan inovasi, keunggulan dan integritas
+                </span>
+              </div>
+              <p class="text-gray-300 mb-6 max-w-md">
+                Sarana Mega Fortuna (SMF) adalah perusahaan manufaktur garment
+                dan tekstil di Bandung yang menyediakan produk berkualitas
+                tinggi untuk kebutuhan lokal dan ekspor
+              </p>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="p-2 bg-[#5e5e5e] flex items-center rounded-full hover:bg-[#eb7036] transition-colors duration-300"
+                  aria-label="Facebook"
+                >
+                  <i class="bx bxl-facebook text-2xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="p-2 bg-[#5e5e5e] flex items-center rounded-full hover:bg-[#eb7036] transition-colors duration-300"
+                  aria-label="Twitter"
+                >
+                  <i class="bx bxl-twitter text-2xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="p-2 bg-[#5e5e5e] flex items-center rounded-full hover:bg-[#eb7036] transition-colors duration-300"
+                  aria-label="Instagram"
+                >
+                  <i class="bx bxl-instagram text-2xl"></i>
+                </a>
+                <a
+                  href="#"
+                  class="p-2 bg-[#5e5e5e] flex items-center rounded-full hover:bg-[#eb7036] transition-colors duration-300"
+                  aria-label="LinkedIn"
+                >
+                  <i class="bx bxl-linkedin text-2xl"></i>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Company</h3>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Our Process
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Sustainability
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    News
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Services</h3>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Custom Design
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Manufacturing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Quality Assurance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Global Distribution
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Consulting
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Support</h3>
+              <ul class="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    FAQs
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Request a Quote
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-[#5e5e5e] pt-8 pb-6">
+            <div class="max-w-xl mx-auto">
+              <h3 class="text-lg font-semibold mb-4 text-center">
+                Subscribe to Our Newsletter
+              </h3>
+              <form class="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  class="flex-grow px-4 py-3 bg-[#5e5e5e] rounded-md focus:outline-none focus:ring-2 focus:ring-[#eb7036]"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="px-6 py-3 bg-[#eb7036] text-white rounded-md font-medium hover:bg-[#eb7036]/80 transition-colors duration-300 whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="border-t border-[#5e5e5e] pt-8 text-center text-gray-500 text-sm"
+          >
+            <p
+              x-data="{ currentYear: new Date().getFullYear(), siteName: 'PT. Sarana Mega Fortuna' }"
+            >
+              &copy; <span x-text="currentYear"></span>
+              <span x-text="siteName"></span>. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <button
+        class="fixed bottom-6 right-6 z-50 p-3 flex items-center bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300"
+        aria-label="Contact on WhatsApp"
+      >
+        <i class="bx bxl-whatsapp text-2xl"></i>
+      </button>
+    </div>
+
+    <script>
+      function smfTheme() {
+        return {
+          isDark: false,
+          isMenuOpen: false,
+          isScrolled: false,
+          activeSection: "home",
+          init() {
+            window.addEventListener("scroll", () => {
+              this.handleScroll(); // now 'this' refers to Alpine component
+            });
+
+            this.isDark = localStorage.getItem("theme") === "dark";
+          },
+          handleScroll() {
+            this.isScrolled = window.scrollY > 10;
+          },
+          toggleMenu() {
+            this.isMenuOpen = !this.isMenuOpen;
+            document.body.classList.toggle("overflow-hidden", this.isMenuOpen);
+          },
+          closeMenu() {
+            this.isMenuOpen = false;
+            document.body.classList.remove("overflow-hidden");
+          },
+          setActiveSection(section) {
+            this.activeSection = section;
+            this.closeMenu();
+          },
+          toggleTheme() {
+            this.isDark = !this.isDark;
+            localStorage.setItem("theme", this.isDark ? "dark" : "light");
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
